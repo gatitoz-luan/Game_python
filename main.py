@@ -181,7 +181,8 @@ def musica_JOGO(x):#############################################################
 
 
 def inicio(imagens,som):
-  som[0].play(-1)####################################################################################################
+  som[0].play(-1).set_volume(0.2)
+  ####################################################################################################
   time.sleep(1)
   X=0
   while (X<6):
@@ -275,8 +276,8 @@ def inicio(imagens,som):
       
     A = janela.checkKey()
     if (A!=""):     
-      som[0].stop()#########################################################################################
-      som[1].play()#########################################################################################
+      som[0].stop()
+      som[1].play().set_volume(0.2)
       imagens[17].undraw()
       imagens[26].undraw()
       break
@@ -361,7 +362,8 @@ def selecao(imagem,som):
       
       LOCK1=LOCK1+1
       if (LOCK1%2==0):
-        som[1].play()#######################################################################################
+        som[1].play().set_volume(0.2)
+        #######################################################################################
         P1_OK = Image(Point(contX1,contY1), PNG + "P1_READY.png")
         P1_OK.draw(janela)
         P1.undraw()
@@ -374,7 +376,8 @@ def selecao(imagem,som):
     
       LOCK2=LOCK2+1
       if (LOCK2%2==0):
-        som[1].play()#######################################################################################
+        som[1].play().set_volume(0.2)
+        #######################################################################################
         P2_OK = Image(Point(contX2,contY2), PNG + "P2_READY.png")
         P2_OK.draw(janela)
         P2.undraw()
@@ -535,7 +538,9 @@ def mapa(imagens,som,voltar):
       X=3
       
     if (x=="Return"):
-      som[1].play()#########################################################################################
+      som[1].play()
+      pygame.mixer.music.set_volume(0.2)
+    #########################################################################################
       lista[0].undraw()
       voltar.undraw()
       return X
@@ -638,7 +643,9 @@ def opcoes(imagens,som,voltar):
         imagens[1].draw(janela)
         CONT=1
       if (B==2):
-        som[1].play()#######################################################################################
+        som[1].play()
+        pygame.mixer.music.set_volume(0.2)
+        #######################################################################################
         lista=[V,D]
         time.sleep(1)
         imagens[0].undraw()
@@ -670,6 +677,7 @@ def Vencedor(VENCEDOR,info):
   SOM = pygame.mixer.Sound("Musicas/ACTIVE.ogg")
   MUSICA = pygame.mixer.Sound("Musicas/FIM.ogg")
   SAIR = Image(Point(0,0), "Imagens/Inicio/start.png")
+
   
   if (VENCEDOR=="P1"):
     fundo = Image(Point(0,0), "Imagens/Tela_de_vitoria/P1_WIN.png")
