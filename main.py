@@ -45,7 +45,6 @@ def fundo_inicial():
 def selecao_inicial():
   PNG="Imagens/Selecao_de_personagem/"
   PNG2="Imagens/Instrucoes/"
-  PNG3="Imagens/Easter_eggs/"
   lista=[]
   lista.append(Image(Point(0,0), PNG + "SELECAO_X.png"))
   lista.append(Image(Point(0,0), PNG2 + "1.png"))
@@ -66,17 +65,6 @@ def selecao_inicial():
   lista.append(Image(Point(0,0), PNG2 + "16.png"))
   lista.append(Image(Point(0,0), PNG2 + "17.png"))
   lista.append(Image(Point(0,0), PNG2 + "Instrucoes.png"))  
-  lista.append(Image(Point(0,0), PNG3 + "Saitama.png"))  
-  lista.append(Image(Point(0,0), PNG3 + "Saitama_legenda.png"))  
-  lista.append(Image(Point(0,15), PNG3 + "1.png"))  
-  lista.append(Image(Point(0,15), PNG3 + "2.png"))
-  lista.append(Image(Point(0,15), PNG3 + "3.png"))
-  lista.append(Image(Point(0,15), PNG3 + "4.png"))
-  lista.append(Image(Point(0,15), PNG3 + "5.png"))
-  lista.append(Image(Point(0,15), PNG3 + "6.png"))
-  lista.append(Image(Point(0,15), PNG3 + "7.png"))
-  lista.append(Image(Point(0,15), PNG3 + "8.png"))
-  lista.append(Image(Point(0,30), PNG3 + "texto_professores.png"))  
   return lista
 
 def mapas_iniciais(): 
@@ -298,10 +286,6 @@ def selecao(imagem,som):
   LOCK2=1
   contador=0
   contador2=1
-  contSAITAMA=0
-  contPROFESSORES=0
-  SAITAMA=False
-  PROFESSORES=False
   lista1=[]
   lista2=[]
   while True: 
@@ -324,39 +308,7 @@ def selecao(imagem,som):
       if (contador2==18):
         contador2=1
     mouse = janela.checkMouse()
-    if (mouse!=None):     #Verifica se clicou nas opçoes
-      mouseX , mouseY =  mouse.getX() , mouse.getY() 
-      if (mouseX>-568)  and  (mouseX<-440) and (mouseY>-78) and (mouseY<82):
-        imagem[18].draw(janela)
-        while True:
-          LETRA = janela.checkKey()
-          mouse = janela.checkMouse()
-          if (LETRA!="") or (mouse!=None):
-            imagem[18].undraw()
-            break
-      if (mouseX<568)  and  (mouseX>440) and (mouseY>-78) and (mouseY<82) and (SAITAMA==False):
-        contSAITAMA+=1
-        if (contSAITAMA>=5):
-          imagem[19].draw(janela)
-          imagem[20].draw(janela)          
-          SAITAMA=True
-          
-      if (mouseX<230)  and  (mouseX>-230) and (mouseY<-180) and (PROFESSORES==False):
-        contPROFESSORES+=1
-        if (contPROFESSORES>=10):
-          PROFESSORES=True
-          contPROFESSORES=21
-          imagem[29].draw(janela)
-          
-    if (PROFESSORES==True):
-      APAGA2(lista2)
-      imagem[contPROFESSORES].draw(janela)
-      lista2.append(imagem[contPROFESSORES])
-      if (contador%3==1):  
-        contPROFESSORES+=1
-        if (contPROFESSORES==29):
-          contPROFESSORES=21        
-    print (contPROFESSORES)
+  
     x = janela.checkKey()
     if (x=="space"): ##lock player1
       
@@ -476,13 +428,7 @@ def selecao(imagem,som):
       P1_OK.undraw()
       P2_OK.undraw()
       imagem[0].undraw()
-      if (SAITAMA==True):
-        imagem[19].undraw()
-        imagem[20].undraw() 
             
-      if (PROFESSORES==True):
-        imagem[29].undraw() 
-        APAGA2(lista2)           
       return lista      #return dados x e y para saber qual personagem selecionado
        
 def mapa(imagens,som,voltar):
@@ -538,7 +484,7 @@ def mapa(imagens,som,voltar):
       X=3
       
     if (x=="Return"):
-      som[1].play()
+      som[1].play().set_volume(0.2)
       pygame.mixer.music.set_volume(0.2)
     #########################################################################################
       lista[0].undraw()
@@ -643,8 +589,7 @@ def opcoes(imagens,som,voltar):
         imagens[1].draw(janela)
         CONT=1
       if (B==2):
-        som[1].play()
-        pygame.mixer.music.set_volume(0.2)
+        som[1].play().set_volume(0.2)
         #######################################################################################
         lista=[V,D]
         time.sleep(1)
@@ -704,7 +649,7 @@ def Vencedor(VENCEDOR,info):
   elif (P2=="Itachi/"):
     PLAYER2 = Image(Point(2000,0), "Imagens/Tela_de_vitoria/Itachi.png")
  
-  MUSICA.play(-1)
+  MUSICA.play(-1).set_volume(0.2)
   fundo.draw(janela)
   PLAYER1.draw(janela)
   PLAYER2.draw(janela)
@@ -729,7 +674,7 @@ def Vencedor(VENCEDOR,info):
     X = janela.checkKey()
     update()
     if (X!=""):
-      SOM.play()
+      SOM.play().set_volume(0.2)
       SAIR.undraw()
       MUSICA.stop()
       return
@@ -1073,7 +1018,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
   vai1 = Image(Point(0,0), "Imagens/Efeitos_jogo/1.png")
   GO = Image(Point(0,0), "Imagens/Efeitos_jogo/GO.png")
   
-  musica.play(-1)#############################################################################################
+  musica.play(-1).set_volume(0.2)#############################################################################################
    
   Parado_Direita_P1 =                 Abre_Sprites(P1,0)
   Parado_Esquerda_P1 =                Abre_Sprites(P1,1)
@@ -1138,22 +1083,22 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
 
 
   vai3.draw(janela)
-  TRES.play()
+  TRES.play().set_volume(0.2)
   update()
   time.sleep(1)
   vai3.undraw()
   vai2.draw(janela)
-  DOIS.play()
+  DOIS.play().set_volume(0.2)
   update()
   time.sleep(1)
   vai2.undraw()
   vai1.draw(janela)
-  UM.play()
+  UM.play().set_volume(0.2)
   update()
   time.sleep(1)
   vai1.undraw()
   GO.draw(janela)
-  GOO.play()
+  GOO.play().set_volume(0.2)
   update()
   time.sleep(1)
   GO.undraw()
@@ -1168,10 +1113,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
   if (P1=="Vegeta/"):
     FATOR_DO_P1=1.315
     MAXIMO_P1=150
-  if (P2=="Itachi/") or (P2=="Sasuke/") or (P2=="Madara/"):
-    FATOR_DO_P2=1.315
-    MAXIMO_P2=150
-  if (P2=="Naruto/"):
+  if (P2=="Itachi/") or (P2=="Sasuke/") or (P2=="Madara/") or (P2=="Naruto/"):
     FATOR_DO_P2=1.315
     MAXIMO_P2=150
   
@@ -1221,33 +1163,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
     teclas =janela.checkKey_Buffer()
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
   ############################################ --- MOVIMENTACAO_P1 --- ################################################## 
 
     if ((("d" not in teclas) and ("a" not in teclas)) or (("a" in teclas) and ("d" in teclas))) and (lado_P1=="direita"): #Parado para Direita
@@ -1582,36 +1498,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         lado_P1="direita"
         AGUARDE_P1=False  
 
-  ################################################################################################################# 
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        
-   
+
   #################################################### --- MOVIMENTACAO_P2 --- #######################################
 
     if ((("Right" not in teclas) and ("Left" not in teclas)) or (("Right" in teclas) and ("Left" in teclas))) and (lado_P2=="direita"): #Parado para Direita  
@@ -1978,36 +1865,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         lado_P2="esquerda"
         AGUARDE_P2=False
              
-  ################################################################################################################
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
   ################################## --- HABILIDADE P1 (Goku, Majin_Boo,Freeza) --- ###############################
 
     if ("b" in teclas) and (contHAB_P1>300) and (GOLPEADO_DIREITA_P1==False) and (GOLPEADO_ESQUERDA_P1==False) and (PULO_P1==False) and ((P1=="Goku/") or (P1=="Freeza/") or (P1=="Majin_boo/")) and (MORTO_P1==False):
@@ -2209,33 +2067,6 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         contSOCO_P2=0
         contSOCO_P1=300
         
-  ################################################################################################################## 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2590,7 +2421,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
      
       if (VIDAS_P1==0) and (contAGUARDE_P1>20): #PLAYER 1 PERDEU
         FIM.draw(janela)
-        FIM_DE_JOGO.play()
+        FIM_DE_JOGO.play().set_volume(0.2)
         del FIM_DE_JOGO
         update()
         time.sleep(2)
@@ -2614,7 +2445,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
       
       elif (VIDAS_P2==0) and (contAGUARDE_P2>20): #PLAYER 2 PERDEU
         FIM.draw(janela)
-        FIM_DE_JOGO.play()
+        FIM_DE_JOGO.play().set_volume(0.2)
         del FIM_DE_JOGO
         update()
         time.sleep(2)
@@ -2746,7 +2577,7 @@ del fundo
 
 while True:
   voltar = Image(Point(0,0),"Imagens/Instrucoes/volta.png")
-  sons[2].play(-1)
+  sons[2].play(-1).set_volume(0.2)
   CARREGANDO.undraw()
   update() 
   FundoVelho.undraw()
