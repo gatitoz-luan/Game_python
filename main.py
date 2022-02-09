@@ -1,9 +1,9 @@
 #encoding=utf-8
 from graphics import *
 import time,math,random,datetime
-import pygame#####################################################################################################
-pygame.init()#####################################################################################################
-############ -- FUNÇOES -- #######################################################################################
+import pygame
+pygame.init()#######################################
+############ -- FUNÇOES -- ########################################
 
 def loading():
   CARREGANDO= Image(Point(0,0),"Imagens/Inicio/CARREGANDO.png")
@@ -86,13 +86,10 @@ def opcoes_iniciais():
 def sons_iniciais():
   OGG="Musicas/"
   lista=[]
-  lista.append(pygame.mixer.Sound(OGG +  "ABERTURA.ogg"))#############################################################
-  lista.append(pygame.mixer.Sound(OGG + "ACTIVE.ogg"))################################################################
-  lista.append(pygame.mixer.Sound(OGG + "SELECAO.ogg"))###############################################################
+  lista.append(pygame.mixer.Sound(OGG +  "ABERTURA.ogg"))
+  lista.append(pygame.mixer.Sound(OGG + "ACTIVE.ogg"))
+  lista.append(pygame.mixer.Sound(OGG + "SELECAO.ogg"))
   return lista
-  
-  
-  
   
   
 def informacoes_JOGO(x):
@@ -108,18 +105,16 @@ def informacoes_JOGO(x):
     lista.append(Image(Point(0,0), PNG + "MAJIN_BOO.png"))
   elif (x[0]==1 and x[1]==-1):
     lista.append(Image(Point(0,0), PNG + "FREEZA.png"))
- 
+
   if (x[2]==0 and x[3]==0):
     lista.append(Image(Point(0,0), PNG + "NARUTO.png"))
   elif (x[2]==1 and x[3]==0):
     lista.append(Image(Point(0,0), PNG + "SASUKE.png"))
   elif (x[2]==0 and x[3]==-1):
-     lista.append(Image(Point(0,0), PNG + "MADARA.png"))
+    lista.append(Image(Point(0,0), PNG + "MADARA.png"))
   elif (x[2]==1 and x[3]==-1):
-     lista.append(Image(Point(0,0), PNG + "ITACHI.png"))
+    lista.append(Image(Point(0,0), PNG + "ITACHI.png"))
 
-
-    
   if (x[0]==0 and x[1]==0):
     lista.append("Goku/")
   elif (x[0]==1 and x[1]==0):
@@ -128,15 +123,15 @@ def informacoes_JOGO(x):
     lista.append("Majin_boo/")
   elif (x[0]==1 and x[1]==-1):
     lista.append("Freeza/")
- 
+
   if (x[2]==0 and x[3]==0):
     lista.append("Naruto/")
   elif (x[2]==1 and x[3]==0):
     lista.append("Sasuke/")
   elif (x[2]==0 and x[3]==-1):
-     lista.append("Madara/")
+    lista.append("Madara/")
   elif (x[2]==1 and x[3]==-1):
-     lista.append("Itachi/")
+    lista.append("Itachi/")
 
   return lista
 
@@ -152,25 +147,21 @@ def mapa_no_jogo(x):
     mapa = Image(Point(0,0), PNG + "DESERTO_X.png")
   return mapa
     
-def musica_JOGO(x):###################################################################################################
+def musica_JOGO(x):
   OGG = "Musicas/"
   if (x==0):
-    musica = pygame.mixer.Sound(OGG + "BATALHA_LAVA.ogg")#############################################################
+    musica = pygame.mixer.Sound(OGG + "BATALHA_LAVA.ogg")
   elif (x==1):
-    musica = pygame.mixer.Sound(OGG + "BATALHA_GELO.ogg")#############################################################
+    musica = pygame.mixer.Sound(OGG + "BATALHA_GELO.ogg")
   elif (x==2):
-    musica = pygame.mixer.Sound(OGG + "BATALHA_FLORESTA.ogg")#########################################################
+    musica = pygame.mixer.Sound(OGG + "BATALHA_FLORESTA.ogg")
   else:
-    musica = pygame.mixer.Sound(OGG + "BATALHA_DESERTO.ogg")##########################################################
+    musica = pygame.mixer.Sound(OGG + "BATALHA_DESERTO.ogg")
   return musica
   
-  
-  
-
 
 def inicio(imagens,som):
   som[0].play(-1).set_volume(0.2)
-  ####################################################################################################
   time.sleep(1)
   X=0
   while (X<6):
@@ -188,7 +179,6 @@ def inicio(imagens,som):
     X=X+1
   imagens[13].draw(janela)
   update()
- 
   imagens[25].draw(janela)
   imagens[24].draw(janela)
   imagens[23].draw(janela)
@@ -315,7 +305,6 @@ def selecao(imagem,som):
       LOCK1=LOCK1+1
       if (LOCK1%2==0):
         som[1].play().set_volume(0.2)
-        #######################################################################################
         P1_OK = Image(Point(contX1,contY1), PNG + "P1_READY.png")
         P1_OK.draw(janela)
         P1.undraw()
@@ -329,14 +318,13 @@ def selecao(imagem,som):
       LOCK2=LOCK2+1
       if (LOCK2%2==0):
         som[1].play().set_volume(0.2)
-        #######################################################################################
         P2_OK = Image(Point(contX2,contY2), PNG + "P2_READY.png")
         P2_OK.draw(janela)
         P2.undraw()
         
       else:
-       P2.draw(janela)
-       P2_OK.undraw()
+        P2.draw(janela)
+        P2_OK.undraw()
 
     elif (x=="d") or (x=="D"):  ##PLAYER 1
       if (LOCK1%2==0):
@@ -428,9 +416,8 @@ def selecao(imagem,som):
       P1_OK.undraw()
       P2_OK.undraw()
       imagem[0].undraw()
-            
       return lista      #return dados x e y para saber qual personagem selecionado
-       
+
 def mapa(imagens,som,voltar):
   lista=[]
   X1=imagens[0]
@@ -486,7 +473,6 @@ def mapa(imagens,som,voltar):
     if (x=="Return"):
       som[1].play().set_volume(0.2)
       pygame.mixer.music.set_volume(0.2)
-    #########################################################################################
       lista[0].undraw()
       voltar.undraw()
       return X
@@ -560,7 +546,6 @@ def opcoes(imagens,som,voltar):
             DANO.setSize(36)
             DANO.draw(janela)
             update()
-     
       if (A=="d") or (A=="D") or (A=="Right"):
         if (X1==75):#VIDA
           if (V==20):
@@ -582,7 +567,6 @@ def opcoes(imagens,som,voltar):
             DANO.setSize(36)
             DANO.draw(janela)
             update()
-           
     if (A=="Return"):
       B=B+1
       if (B==1):
@@ -590,7 +574,6 @@ def opcoes(imagens,som,voltar):
         CONT=1
       if (B==2):
         som[1].play().set_volume(0.2)
-        #######################################################################################
         lista=[V,D]
         time.sleep(1)
         imagens[0].undraw()
@@ -599,7 +582,7 @@ def opcoes(imagens,som,voltar):
         DANO.undraw()
         VIDA.undraw()
         voltar.undraw()
-        som[2].stop()#######################################################################################
+        som[2].stop()
         return lista
     
     if (A=="Escape"):
@@ -638,8 +621,7 @@ def Vencedor(VENCEDOR,info):
     PLAYER1 = Image(Point(-2000,0), "Imagens/Tela_de_vitoria/Majin_boo.png")
   elif (P1=="Freeza/"):
     PLAYER1 = Image(Point(-2000,0), "Imagens/Tela_de_vitoria/Freeza.png")
- 
- 
+
   if (P2=="Naruto/"):
     PLAYER2 = Image(Point(2000,0), "Imagens/Tela_de_vitoria/Naruto.png")
   elif (P2=="Sasuke/"):
@@ -648,7 +630,7 @@ def Vencedor(VENCEDOR,info):
     PLAYER2 = Image(Point(2000,0), "Imagens/Tela_de_vitoria/Madara.png")
   elif (P2=="Itachi/"):
     PLAYER2 = Image(Point(2000,0), "Imagens/Tela_de_vitoria/Itachi.png")
- 
+
   MUSICA.play(-1).set_volume(0.2)
   fundo.draw(janela)
   PLAYER1.draw(janela)
@@ -678,7 +660,6 @@ def Vencedor(VENCEDOR,info):
       SAIR.undraw()
       MUSICA.stop()
       return
-  
   
 def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==Musica do Mapa, mapa==Qual a ser desenhado 
   FIM = Image(Point(0,0), "Imagens/Efeitos_jogo/GAME.png")
@@ -737,7 +718,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
       lista.append(Image(Point(0,0),"Imagens/Sprites/" + str(PERSONAGEM) + "Parado_Direita/3.png"))
       lista.append(Image(Point(0,0),"Imagens/Sprites/" + str(PERSONAGEM) + "Parado_Direita/4.png"))
       return lista
-       
+
     def Parado_Esquerda(PERSONAGEM,lista):
       lista.append(Image(Point(0,0),"Imagens/Sprites/" + str(PERSONAGEM) + "Parado_Esquerda/1.png"))
       lista.append(Image(Point(0,0),"Imagens/Sprites/" + str(PERSONAGEM) + "Parado_Esquerda/2.png"))
@@ -1018,7 +999,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
   vai1 = Image(Point(0,0), "Imagens/Efeitos_jogo/1.png")
   GO = Image(Point(0,0), "Imagens/Efeitos_jogo/GO.png")
   
-  musica.play(-1).set_volume(0.2)#############################################################################################
+  musica.play(-1).set_volume(0.2)
    
   Parado_Direita_P1 =                 Abre_Sprites(P1,0)
   Parado_Esquerda_P1 =                Abre_Sprites(P1,1)
@@ -1079,8 +1060,6 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
   A.draw(janela)
   B.draw(janela)
   update()
- 
-
 
   vai3.draw(janela)
   TRES.play().set_volume(0.2)
@@ -1107,10 +1086,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
   del UM
   del GOO
   
-  if (P1=="Goku/") or (P1=="Majin_boo/") or (P1=="Freeza/"):
-    FATOR_DO_P1=0.657
-    MAXIMO_P1=300
-  if (P1=="Vegeta/"):
+  if (P1=="Goku/") or (P1=="Majin_boo/") or (P1=="Freeza/") or (P1=="Vegeta/"):
     FATOR_DO_P1=1.315
     MAXIMO_P1=150
   if (P2=="Itachi/") or (P2=="Sasuke/") or (P2=="Madara/") or (P2=="Naruto/"):
@@ -1163,8 +1139,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
     teclas =janela.checkKey_Buffer()
     
     
-
-  ############################################ --- MOVIMENTACAO_P1 --- ################################################## 
+############################ --- MOVIMENTACAO_P1 --- ##################### 
 
     if ((("d" not in teclas) and ("a" not in teclas)) or (("a" in teclas) and ("d" in teclas))) and (lado_P1=="direita"): #Parado para Direita
       Parado_Direita_P1[X_P1].draw(janela) 
@@ -1215,8 +1190,8 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         if (X_P1==len(Move_Esquerda_P1)):
           X_P1=0         
 
-  ##################################################### --- PULO_P1 --- ################################################    
-   
+  ###################### --- PULO_P1 --- ################################################    
+
     if ("w" in teclas) and (SOCO_P1==False) and (SOCO_CARREGADO_P1==False) and (SOCO_NORMAL_P1==False) and (GOLPEADO_ESQUERDA_P1==False) and (GOLPEADO_DIREITA_P1==False) and (COLISAO_P1==False) and (HABILIDADE_P1==False): #PULO     
       if (PULO_P1==False):
         PULO_P1=True
@@ -1283,7 +1258,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
     if (ALTURA_P1<-0.4):
       X2_P1=1
       
-  #################################################### --- SOCO_P1 --- ##############################################  
+  #################################### --- SOCO_P1 --- ###########################  
 
     if ("v" in teclas) and (PULO_P1==False) and (GOLPEADO_DIREITA_P1==False) and (GOLPEADO_ESQUERDA_P1==False) and (COLISAO_P1==False) and (HABILIDADE_P1==False): 
       if (SOCO_P1==False):  
@@ -1404,7 +1379,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
           if (X6_P1==8):
             X6_P1=0
 
-  #################################################### --- colisao_P1 --- ############################################ 
+############################## --- colisao_P1 --- ############################# 
 
     if  ((SOCO_NORMAL_P1==True) or (SOQUE_P1==True)) and (lado_P1=="direita"):
       if (((PosicaoX_P1-20)<=(PosicaoX_P2) and ((PosicaoX_P2-PosicaoX_P1)<=92)) and ((PosicaoY_P2-PosicaoY_P1)<90 and (PosicaoY_P2-PosicaoY_P1)>-55)):                                
@@ -1426,7 +1401,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         GOLPEADO_ESQUERDA_P2=True
         contSOCO_P2=0
         
-  ###################################################### --- FORA_DA_TELA_P1 --- ######################################
+  ################################ --- FORA_DA_TELA_P1 --- ######################################
 
     if (MORTO_P1==True):
       if(FORA_P1!=None):
@@ -1452,7 +1427,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
       if (FORA_P1!=None):
         FORA_P1.undraw()
         
-  ###################################################### --- MORTO_P1 --- ############################################
+  ############################# --- MORTO_P1 --- ############################################
     
     if (PosicaoX_P1<-1000) or (PosicaoX_P1>1000):
       if (MORTO_P1==False):
@@ -1498,8 +1473,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         lado_P1="direita"
         AGUARDE_P1=False  
 
-
-  #################################################### --- MOVIMENTACAO_P2 --- #######################################
+##################### --- MOVIMENTACAO_P2 --- #######################################
 
     if ((("Right" not in teclas) and ("Left" not in teclas)) or (("Right" in teclas) and ("Left" in teclas))) and (lado_P2=="direita"): #Parado para Direita  
       Parado_Direita_P2[X_P2].draw(janela) 
@@ -1550,7 +1524,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         if (X_P2==len(Move_Esquerda_P2)):
           X_P2=0 
            
-  ##################################################### --- PULO_P2 --- ########################################## 
+  ################## --- PULO_P2 --- ########################################## 
 
     if ("Up" in teclas) and (SOCO_P2==False) and (SOCO_CARREGADO_P2==False) and (SOCO_NORMAL_P2==False) and (GOLPEADO_ESQUERDA_P2==False) and (GOLPEADO_DIREITA_P2==False) and (HABILIDADE_P2==False):  #PULO     
       if (PULO_P2==False):
@@ -1619,8 +1593,8 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
             
     if (ALTURA_P2<-0.4):
       X2_P2=1
-      
-  #################################################### --- SOCO_P2 --- ############################################   
+
+#################### --- SOCO_P2 --- ############################################   
     
     if ("p" in teclas) and (PULO_P2==False) and (GOLPEADO_DIREITA_P2==False) and (GOLPEADO_ESQUERDA_P2==False): 
       if (SOCO_P2==False) and (HABILIDADE_P2==False):  
@@ -1669,7 +1643,6 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
           X4_P2+=1
           if (X4_P2==16):
             X4_P2=14
-
 
     if ("p" not in teclas) and (SOCO_P2==True):
       SOCO_P2=False
@@ -1755,7 +1728,6 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
             X6_P2=0 
           
     elif ((SOCO_NORMAL_P2==True) or (SOQUE_P2==True)) and (lado_P2=="esquerda"):
-   
       apagar_sprites_P2(APAGAR_P2)
       Soco_Esquerda_P2[X6_P2].draw(janela)
       XX = Soco_Esquerda_P2[X6_P2].getAnchor()
@@ -1771,7 +1743,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
           if (X6_P2==8):
             X6_P2=0
 
-  #################################################### --- colisao_P2 --- ########################################### 
+  ################################## --- colisao_P2 --- ################################### 
 
     if  ((SOCO_NORMAL_P2==True) or (SOQUE_P2==True)) and (lado_P2=="direita"):
       if (((PosicaoX_P2-20)<=(PosicaoX_P1) and ((PosicaoX_P1-PosicaoX_P2)<=92)) and ((PosicaoY_P1-PosicaoY_P2)<90 and (PosicaoY_P1-PosicaoY_P2)>-55)):                                
@@ -1793,12 +1765,11 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         GOLPEADO_ESQUERDA_P1=True
         contSOCO_P1=0
         
-  ###################################################### --- FORA_DA_TELA_P2 --- ###################################
-   
+  ###################################################### --- FORA_DA_TELA_P2 --- 
     if (MORTO_P2==True):
       if(FORA_P2!=None):
         FORA_P2.undraw() 
-     
+
     if (PosicaoX_P2<-680) or (PosicaoX_P2>680):
       if (FORA_DA_TELA_P2==False) and (PosicaoX_P2<-650):
         FORA_DA_TELA_P2=True
@@ -1819,7 +1790,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
       if (FORA_P2!=None):
         FORA_P2.undraw()
         
-  ###################################################### --- MORTO_P2 --- ###########################################
+  ############################# --- MORTO_P2 --- ###########################################
 
     if (PosicaoX_P2<-1000) or (PosicaoX_P2>1000):
       if (MORTO_P2==False):
@@ -1864,10 +1835,8 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         PosicaoY_P2=-265
         lado_P2="esquerda"
         AGUARDE_P2=False
-             
-  
-  ################################## --- HABILIDADE P1 (Goku, Majin_Boo,Freeza) --- ###############################
 
+  ######################## --- HABILIDADE P1 (Goku, Majin_Boo,Freeza) --- #######################
     if ("b" in teclas) and (contHAB_P1>300) and (GOLPEADO_DIREITA_P1==False) and (GOLPEADO_ESQUERDA_P1==False) and (PULO_P1==False) and ((P1=="Goku/") or (P1=="Freeza/") or (P1=="Majin_boo/")) and (MORTO_P1==False):
       HABILIDADE_P1=True
       
@@ -1938,11 +1907,11 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
           contHAB_P1=0
     
     if (GOLPEADO_DIREITA_P1==True) or (GOLPEADO_ESQUERDA_P1==True) and (P1!="Vegeta/"):#SE TOMAR HIT CANCELA A habilidade
-       COLISAO_P1=False
-       HABILIDADE_P1=False
-       X7_P1=0
-       contHAB_P1=0
-  #################################################### --- colisao --- ############################################
+      COLISAO_P1=False
+      HABILIDADE_P1=False
+      X7_P1=0
+      contHAB_P1=0
+  ############################# --- colisao --- ############################################
     
     if  (COLISAO_P1==True) and (lado_P1=="direita") and (P1!="Vegeta/"):
       if ((PosicaoX_P1)<=(PosicaoX_P2)) and ((PosicaoX_P2-(PosicaoX_P1+(250*(X7_P1-9))))<0 ) and ((PosicaoY_P2-PosicaoY_P1)<90):                                
@@ -1954,9 +1923,8 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         GOLPEADO_ESQUERDA_P2=True               
         contSOCO_P2=0
         contSOCO_P1=300    
-  #################################################################################################################
-        
-  ######################################## --- HABILIDADE_P1 (Vegeta) - ###########################################
+
+  ##################### --- HABILIDADE_P1 (Vegeta) - ###########################################
 
     if ("b" in teclas) and (contHAB_P1>150) and (GOLPEADO_DIREITA_P1==False) and (GOLPEADO_ESQUERDA_P1==False) and (PULO_P1==False) and (P1=="Vegeta/") and (MORTO_P1==False):
       if (HABILIDADE_P1==False):
@@ -2067,10 +2035,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         contSOCO_P2=0
         contSOCO_P1=300
         
-
-
-
-  ############################################### --- HABILIDADE P2_NARUTO --- ####################################
+############################### --- HABILIDADE P2_NARUTO --- ####################################
     
     if ("o" in teclas) and (contHAB_P2>150) and (GOLPEADO_DIREITA_P2==False) and (GOLPEADO_ESQUERDA_P2==False) and (PULO_P2==False) and (P2=="Naruto/") and (MORTO_P2==False):
       HABILIDADE_P2=True
@@ -2108,11 +2073,10 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
           contHAB_P2=0
 
     if (GOLPEADO_DIREITA_P2==True) or (GOLPEADO_ESQUERDA_P2==True) and (P2=="Naruto/"):#SE TOMAR HIT CANCELA A habilidade
-       HABILIDADE_P2=False
-       X7_P2=0
-       contHAB_P2=0
-       
-  #################################################### --- colisao --- ###########################################  
+      HABILIDADE_P2=False
+      X7_P2=0
+      contHAB_P2=0
+###################################### --- colisao --- ###########################################  
 
     if (X7_P2>6) and (lado_P2=="direita") and (PosicaoX_P2)<=(PosicaoX_P1) and ((PosicaoX_P1-PosicaoX_P2)<=180) and ((PosicaoY_P1-PosicaoY_P2)<150) and ((PosicaoY_P1-PosicaoY_P2)>-150) and  (P2=="Naruto/"):                                
         GOLPEADO_DIREITA_P1=True               
@@ -2122,8 +2086,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         GOLPEADO_ESQUERDA_P1=True
         contSOCO_P1=0
         contSOCO_P2=450               
-  ################################################################################################################
-        
+
   ######################################## --- HABILIDADE_P2 (Sasuke , Itachi, Madara) - ########################
 
     if ("o" in teclas) and (contHAB_P2>150) and (GOLPEADO_DIREITA_P2==False) and (GOLPEADO_ESQUERDA_P2==False) and (PULO_P2==False) and ((P2=="Sasuke/") or (P2=="Itachi/") or (P2=="Madara/")) and (MORTO_P2==False):
@@ -2217,7 +2180,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
       X8_P2=0
       contHAB_P2=0
         
-  ######################################################### --- colisao --- #####################################
+  ################################################ --- colisao --- ###################
 
     if (HITBOX_DIREITA_P2==True) and ((P2=="Sasuke/") or (P2=="Itachi/") or (P2=="Madara/")):  
       if ((BOLAX_P2+100)>(PosicaoX_P1)) and ((BOLAX_P2-5)<(PosicaoX_P1)) and (PosicaoY_P1<-165):                                
@@ -2236,37 +2199,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         contSOCO_P1=0
         contSOCO_P2=300
         
-  ##############################################################################################################      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-  ############################################# --- GOLPEADO_P1 --- ################################################
+        ######### --- GOLPEADO_P1 --- ################################################
 
     if (GOLPEADO_DIREITA_P1==True):    
       apagar_sprites_P1(APAGAR_P1)   
@@ -2314,7 +2247,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         contHIT_P1=0
       APAGAR_P1.append(Golpeado_Esquerda_P1[contHIT_P1]) 
       
-  ############################################# --- GOLPEADO_P2 --- ###############################################
+  ########################### --- GOLPEADO_P2 --- ########################################
     
     if (GOLPEADO_DIREITA_P2==True):    
       apagar_sprites_P2(APAGAR_P2)   
@@ -2361,43 +2294,12 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         apagar_sprites_P2(APAGAR_P2)   
         contHIT_P2=0
       APAGAR_P2.append(Golpeado_Esquerda_P2[contHIT_P2])   
-       
-  ###############################################################################################################      
-             
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-           
+
     if contadorGLOBAL%40==1: #ATUALIZA OS DADOS DO JOGADOR
       VIDA_P1.undraw() 
       VIDA_P2.undraw()
       Dano_P1.undraw() 
       Dano_P2.undraw()    
-         
       VIDA_P1 = Text(Point(-350,320), str(VIDAS_P1) + " X")
       VIDA_P1.setSize(32) 
       VIDA_P1.setFill("white")                          
@@ -2413,12 +2315,12 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
       Dano_P1.setSize(32)
       Dano_P1.setFill("white") 
       Dano_P1.draw(janela)
-     
+
       Dano_P2 = Text(Point(580,265), str(DANO_P2) + " %")            
       Dano_P2.setSize(32)
       Dano_P2.setFill("white") 
       Dano_P2.draw(janela)
-     
+
       if (VIDAS_P1==0) and (contAGUARDE_P1>20): #PLAYER 1 PERDEU
         FIM.draw(janela)
         FIM_DE_JOGO.play().set_volume(0.2)
@@ -2466,9 +2368,6 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
         apagar_habilidade_P2(APAGAR_HABILIDADE_P2)  
         musica.stop()
         return "P1"
-     
-     
-
 
     
     if (contHAB_P1<MAXIMO_P1):
@@ -2482,12 +2381,12 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
       ESPECIAL2.undraw()
       A.undraw()
       B.undraw()
-      ESPECIAL1= Rectangle(Point(-487,227),Point(A1+1,210))   #Point(-487,227),Point(-290,210)) especial player 1
+      ESPECIAL1= Rectangle(Point(-487,227),Point(A1+1,210))   #Point(-487,227),Point(-290,210)especial player 1
       ESPECIAL1.setOutline("deep sky blue") 
       ESPECIAL1.setFill("deep sky blue")
       ESPECIAL1.draw(janela)  
     
-      ESPECIAL2= Rectangle(Point(440,227),Point(B1+1,210))    #Point(440,227),Point(637,210)) especial player 2
+      ESPECIAL2= Rectangle(Point(440,227),Point(B1+1,210))    #Point(440,227),Point(637,210) especial player 2
       ESPECIAL2.setOutline("deep sky blue")
       ESPECIAL2.setFill("deep sky blue")
       ESPECIAL2.draw(janela)
@@ -2501,8 +2400,8 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
       A.draw(janela)
       B.draw(janela)
 
-  ############################################## --- SAÍDA , PAUSE E TIMING --- ################################   
-   
+################################ --- SAÍDA , PAUSE E TIMING --- ##################   
+
     contPAUSE+=1
     if ("Escape" in teclas): #esse contPAUSE -1 impede ele de entrar instantaneamente no pause de novo
           contPAUSE-=1
@@ -2535,12 +2434,7 @@ def jogo(Z,info,musica,mapa): #Z== VIDAS e PONTOS, info== PERSONAGENS, musica==M
     fator_tempo = float((t_final-starttime).microseconds)/1000
     durma= 0.002 / (fator_tempo + 1)  # +/- 200FPS
     time.sleep(durma)
-    
-  ####################################### --- Frederico Bender Tiggemann --- ####################################  
-    
-    
-    
-  
+
 
 ############ -- VARIAVEIS -- #################################################################################
 
@@ -2548,7 +2442,7 @@ Z=4
 Y=4
 x2=1
 
-############ -- PROGRAMAÇAO -- ###############################################################################
+############ -- PROGRAMAÇAO -- #################################################
 
 PNG="Imagens/Inicio/"
 janela=GraphWin("Dragonball VS Naruto",1300,710,autoflush=False)
@@ -2566,7 +2460,6 @@ selecaoPersonagem = selecao_inicial()     ##############
 mapas = mapas_iniciais()                   #loading - 1 #
 opcoesMenu = opcoes_iniciais()              ##############
 sons = sons_iniciais()                       ##############
-                                 
 CARREGANDO.undraw()
 update()
 
@@ -2581,7 +2474,7 @@ while True:
   CARREGANDO.undraw()
   update() 
   FundoVelho.undraw()
- 
+
   while Z==4:   #FAZ AS TELAS DE SELEÇÃO VOLTAREM
     while Y==4:
       if x2!=0:
@@ -2620,12 +2513,10 @@ while True:
   
   del info            #DELETA IMAGENS ANTIGAS E CARREGA AS NOVAS
   del musica
- 
   selecaoPersonagem = selecao_inicial()     ##############
   mapas = mapas_iniciais()                   #loading - 3 #
   opcoesMenu = opcoes_iniciais()              ##############
   sons = sons_iniciais()                       ##############
-   
   Z=4
   Y=4
   x2=1
